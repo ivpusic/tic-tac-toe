@@ -1,0 +1,54 @@
+#:kivy 1.5.1
+
+<GameplayScreen>:	
+	GridLayout:
+		cols: 3
+		Button:
+			font_size: 100
+			on_press: root.box="a"; root.btn_click(*args)
+		Button:
+			font_size: 100
+			on_press: root.box="b"; root.btn_click(*args)
+		Button:
+			font_size: 100
+			on_press: root.box="c"; root.btn_click(*args)
+		Button:
+			font_size: 100
+			on_press: root.box="d"; root.btn_click(*args)
+		Button:
+			font_size: 100
+			on_press: root.box="e"; root.btn_click(*args)
+		Button:
+			font_size: 100
+			on_press: root.box="f"; root.btn_click(*args)
+		Button:
+			font_size: 100
+			on_press: root.box="g"; root.btn_click(*args)
+		Button:
+			font_size: 100
+			on_press: root.box="h"; root.btn_click(*args)
+		Button:
+			font_size: 100
+			on_press: root.box="i"; root.btn_click(*args)
+
+<MenuScreen>:
+	FloatLayout:
+		Image:
+			source: "background.jpg"
+			Button:
+				opacity: 0.75
+				size: (200, 100)
+				x: 210
+				y: 320
+				text: "Play!"
+				on_press: root.newGame(*args)
+			Button:
+				opacity: 0.75
+				size: (200, 100)
+				x: 410
+				y: 320
+				text: "High Scores"
+				on_press: root.highScores(*args)
+
+<HighScoresScreen>:
+
