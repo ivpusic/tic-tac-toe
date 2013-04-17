@@ -62,20 +62,11 @@ hsScreen = HighScoresScreen(name="highScores")
 
 class GameplayScreen(Screen):
 
-    '''
-    Class attributes
-    '''
-
     box = StringProperty()
     view = ModalView(size_hint=(None, None), size=(300, 100))
     turn = 'x'
     points = 0
     gameOver = 0
-    
-
-    '''
-    Class methods
-    '''
     
     def __init__(self, **kwargs):
         super(GameplayScreen, self).__init__(**kwargs)
@@ -87,7 +78,7 @@ class GameplayScreen(Screen):
         self._keyboard = None
 
     def _on_keyboard_down(self, keyboard, keycode, text, modifiers):
-         '''
+        '''
         Detect pressed key
         '''
         # when user press escape key
@@ -97,7 +88,7 @@ class GameplayScreen(Screen):
         return -1
 
     def showMenu(self, kwargs):
-         '''
+        '''
         Method for showing main menu
         '''
         self.view.dismiss()
