@@ -86,20 +86,20 @@ class GameplayScreen(Screen):
         self._keyboard.unbind(on_key_down=self._on_keyboard_down)
         self._keyboard = None
 
-    '''
-    Detect pressed key
-    '''
     def _on_keyboard_down(self, keyboard, keycode, text, modifiers):
+         '''
+        Detect pressed key
+        '''
         # when user press escape key
         self.view.dismiss()
         if(keycode[0] == 27):
             self.showMenuModal(self)
         return -1
 
-    '''
-    Method for showing main menu
-    '''
     def showMenu(self, kwargs):
+         '''
+        Method for showing main menu
+        '''
         self.view.dismiss()
 
         try:
@@ -110,10 +110,10 @@ class GameplayScreen(Screen):
         
         sm.current = "menu"
 
-    '''
-    Clear table and begin new game
-    '''
     def newGame(self, kwargs):
+        '''
+        Clear table and begin new game
+        '''
         # clear table
         for linearLayout in self.children:
             for linear in linearLayout.children:
@@ -128,30 +128,31 @@ class GameplayScreen(Screen):
         # hide modal
         self.view.dismiss()
 
-    '''
-    If is remi of user is win, goto next level (we will play again -> score++)
-    '''
+
     def nextLevel(self, kwargs):
+        '''
+        If is remi of user is win, goto next level (we will play again -> score++)
+        '''
         self.newGame(kwargs)
         if(self.turn == 'o'):
             response = prolog.query("play(o, _, Result)")
             self.drawTable(kwargs, response)
 
-    '''
-    Switch turns
-    '''
     def changeBeginMove(self):
+        '''
+        Switch turns
+        '''
         if(self.turn == 'x'):
             self.turn = 'o'
             
         elif(self.turn == 'o'):
             self.turn = 'x'
             
-    '''
-    When we have winner, or all squares are filled
-    '''
+
     def showMenuModal(self, winner):
-        
+        '''
+        When we have winner, or all squares are filled
+        '''
         if(winner == 'o'):
             message = "Computer wins. You collect " + str(self.points) + " points!"
             self.gameOver = 1
@@ -188,10 +189,10 @@ class GameplayScreen(Screen):
         self.view.add_widget(boxlayout)
         self.view.open()
 
-    '''
-    Draw table by response from prolog
-    '''
     def drawTable(self, kwargs, response):
+        '''
+        Draw table by response from prolog
+        '''
         for sol in response:
             if((sol["Result"] == 'x') | (sol["Result"] == 'o') | (sol["Result"] == -1)):
                 squares = sol["Result"]
@@ -210,10 +211,10 @@ class GameplayScreen(Screen):
                         if squares[i] != "N":
                             button.text = squares[i]
                         i -= 1
-    '''
-    When user click on some box...
-    '''
     def btn_click(self, args):
+        '''
+        When user click on some box...
+        '''
         if((args.text == "x") | (args.text == "o")):
             Logger.info("Square occupied")
             
